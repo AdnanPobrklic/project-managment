@@ -1,0 +1,109 @@
+.card{
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    border: 1px solid var(--darkest);
+    border-top: 8px solid var(--darkest);
+    border-radius: 15px;
+    width: 90%;
+    background-color: #fff;
+}
+
+.card h2{
+    text-align: center;
+    font-size: 2rem;
+    padding: 15px;
+    color: var(--light-medium);
+    border-bottom: 3px solid var(--light-medium);
+}
+
+.card p {
+    font-family: monospace, sans-serif;
+    margin: 30px 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    color: var(--dark-medium);
+}
+
+.card ul {
+    height: 100%;
+    border-top: 1px solid var(--darkest);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px;
+}
+
+ul.first-number-info{
+    padding: 25px;
+}
+
+ul.four-col-number-info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    gap: 15px;
+}
+
+.number-info li span{
+    font-weight: 900;
+}
+
+.project-zadaci-info-div{
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    gap: 35px;
+}
+
+.moji-zadaci-projekti{
+    width: 90%;
+    margin: auto;
+    gap: 35px;
+    display: flex;
+}
+
+@media (max-width: 1000px) {
+    .card{
+        margin: 30px auto;
+
+    }
+    .project-zadaci-info-div{
+        gap: 0px;
+        flex-direction: column;
+    }
+
+    .project-zadaci-info-div .card{
+        width: 100%;
+    }
+
+    .card ul {
+        padding: 15px 35px;
+        justify-content: space-between;
+    }
+    
+    ul.four-col-number-info{
+        padding: 25px 0px;
+    }
+
+    .moji-zadaci-projekti{
+        flex-direction: column;
+        width: 100%;
+        gap: 0px;
+    }
+}
+
+@media (max-width: 500px) {
+    .card ul {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 35px;
+    }
+    
+    ul.four-col-number-info{
+        grid-template-columns: 1fr;
+        padding: 25px 0px;
+    }
+}

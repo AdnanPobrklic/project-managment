@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/table-page.css">
+    <script type="module" src="/js/table-page.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Radno vrijeme po projektima</h1>
+        <div class="search-field">
+            <label for="search">Pretraga: </label>
+            <input type="text" name="search" id="search" placeholder="Pretraga...">
+        </div>
+            <% if(projekti.length === 0){ %>
+                <h1>Nema dodanih projekata u sistemu</h1>
+            <% }else{ %>
+                <div class="scrollable-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Naziv projekta</th>
+                                <th>Status</th>
+                                <th>Radno Vrijeme</th>
+                            </tr>
+                        </thead>                
+                        <tbody>
+                            <% projekti.forEach(function(projekat) { %>
+                                <tr>
+                                    <td class="kolona-search-first"><%= projekat.naziv %></td>
+                                    <td class="kolona-search-first">
+                                        <%= 
+                                        projekat.statusProjekta === 0 ? 'Na čekanju' :
+                                        projekat.statusProjekta === 1 ? 'U izradi' :
+                                        projekat.statusProjekta === 2 ? 'Završen' :
+                                        projekat.statusProjekta === 3 ? 'Obustavljen' :
+                                        'Nepoznato' 
+                                    %>
+                                    </td>
+                                    <td><%= projekat.radniSati %>h <%= projekat.radneMinute %>min</td>                            
+                                </tr>
+                            <% }); %>   
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="izvjestaj-actions">
+                    <div class="generate-pdf-btns">
+                        <form action="/radna-povrsina/radno-vrijeme/projekti/izvjestaj" method="GET">
+                            <button class="generate-pdf-button" id="generate-projects-work-time">Preuzmi izvještaj</button>
+                        </form>
+                    </div>
+                    
+                    <form id="slanje-izvjestaja-na-mail">
+                        <div class="report-mail-form-inputs">
+                            <input type="email" placeholder="email..."  name="receiverMail" id="receiverMail" required>
+                        </div>
+                        <div class="loader"></div>
+                        <button>Pošalji na mail</button>
+                    </form>
+                </div>
+            <% } %>
+    </main>    
+    <div class="loader"></div>
+    <p class="display-message"></p>
+</body>
+</html>
+
+
+
+
+

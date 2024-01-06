@@ -1,0 +1,247 @@
+.aktivnosti-toggle-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.filter-aktivnosti-container{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-aktivnosti-container select{
+    width: 200px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid var(--darkest);
+    border-top: 3px solid var(--darkest);
+    border-radius: 5px;
+}
+
+.toggle{
+    user-select: none;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--darkest);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.online-user-toggle{
+    border-radius: 0px 15px 15px 0px;
+    border-top: 2px solid var(--darkest);
+    border-right: 2px solid var(--darkest);
+    border-bottom: 2px solid var(--darkest);
+}
+
+.activity-toggle{
+    border: 2px solid var(--darkest);
+    border-radius: 15px 0px 0px 15px;
+}
+.activity-toggle.active, .online-user-toggle.active{
+    background-color: var(--darkest );
+    color: #fff;
+}
+
+.toggle:hover{
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+.aktivnost-sistema-section{
+    display: block;
+}
+
+.aktivnost-sistema-section.inactive{
+    display: none;
+}
+
+.online-korisnici-section{
+    display: none;
+}
+
+.online-korisnici-section.active{
+    display: block;
+}
+
+.li-item > span{
+    font-weight: 900;
+}
+
+.online-korisnici-section{
+    border-top: 5px solid var(--darkest);
+    border-radius: 15px;
+    background-color: #fff;
+    width: 90%;
+    margin: 30px auto;
+    padding-bottom: 50px;
+}
+
+.online-korisnici-section input{
+    margin: 30px 15px;
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid var(--light-medium);
+}
+
+.online-korisnici-section ul{
+    height: 50vh;
+    overflow-y: auto;
+    display: grid;
+    margin: auto;
+    justify-items: center;
+    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.online-korisnici li.inactive{
+    display: none;
+}
+
+.online-korisnici li {
+    list-style: none;
+}
+
+.online-korisnici li::before {
+    content: "• ";
+    color: rgb(30, 180, 10);        
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em; 
+    margin-left: -1em; 
+}
+
+.aktivnosti-sistema{
+    height: 50vh;
+    overflow-y: auto;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.aktivnosti-sistema li {
+    margin-top: 15px;
+    display: flex;
+    position: relative;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid var(--darkest);
+    border-top: 3px solid var(--darkest);
+    padding: 25px;
+    font-size: 1.1rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.aktivnosti-sistema li.hide-li {
+    display: none;
+}
+
+.activity-icon{
+    position: absolute;
+}
+
+.first-li-item{
+    margin-left: 50px;
+}
+
+.fa-trash:hover, .display-setter i:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.display-setter{
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px;
+    font-size: 1.2rem;
+}
+
+#page-info{
+    font-size: 0.9rem;
+    color: rgb(94, 94, 94);
+}
+
+.no-activity-h2{
+    margin: 30px;
+    text-align: center;
+}
+
+@media (max-width: 1000px){
+    .fa-trash:hover, .display-setter i:hover{
+        opacity: 1;
+    }
+
+    .toggle:hover{
+        background-color: #ffffff00;
+    }
+
+    .aktivnosti-sistema li {
+        padding: 25px;
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .first-li-item{
+        margin-left: 0px;
+    }
+
+    .activity-icon{
+        left: 20px;
+    }
+
+    .fa-trash{
+        position: absolute;
+        right: 20px;
+        font-size: 1.1rem;
+    }
+
+    .online-korisnici-section ul{
+        padding: 15px;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 700px){
+    .online-korisnici-section ul{
+        gap: 25px;
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 400px){
+    .aktivnosti-sistema li {
+        padding: 15px;
+        font-size: .9rem;
+    }
+
+    .toggle{
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 350px){
+    .aktivnosti-sistema li {
+        padding: 5px;
+        font-size: .8rem;
+    }
+
+    .toggle{
+        font-size: 0.75rem;
+    }
+}

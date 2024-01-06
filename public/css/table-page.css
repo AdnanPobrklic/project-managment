@@ -1,0 +1,251 @@
+@import url("./radna-povrsina.css");
+
+.search-field{
+    margin: 50px auto 30px auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.search-field label{
+    color: rgb(116, 116, 116);
+}
+
+
+#search{
+    min-width: 250px;
+    padding: 8px;
+    color: rgb(116, 116, 116);
+    border: 1px solid rgba(116, 116, 116, 0.541);
+    border-radius: 5px;
+    font-weight: 900;
+}
+
+.scrollable-table {
+    margin: 0px auto;
+    width: 90%;
+    max-height: 500px;
+    overflow: auto; 
+    margin-bottom: 25px;
+} 
+
+tbody tr:nth-child(even){
+    background-color: #dbd1d0a1;
+}
+
+tr.hidden{
+    display: none;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    color: var(--darkest);
+}
+
+th{
+    font-size: 1.1rem;
+    border-bottom: 3px solid rgba(156, 156, 156, 0.842);
+    padding: 5px;
+}
+
+td {
+    border-bottom: 1px solid rgb(156, 156, 156);
+    padding: 15px;
+    min-width: 150px;
+}
+
+.settings-icon, .fa-pen-to-square{
+    color: rgb(82, 82, 82);
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+.settings-icon:hover, .fa-pen-to-square:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.project-status{
+    font-weight: 600;
+}
+
+.project-status.active{
+   color: rgb(99, 99, 99);
+}
+
+.project-status.onhold{
+    color: rgb(207, 148, 21);
+}
+
+.project-status.finished{
+    color: rgb(18, 255, 10);
+}
+
+.project-status.stopped{
+    color: rgb(255, 12, 10);
+}
+
+.progress-column{
+    display: flex;
+    flex-direction: column;
+}
+
+progress{
+    width: 100%;
+}
+
+.neizvrsen{
+    color: rgb(255, 12, 10);
+    font-weight: 900;
+}
+
+.izvrsen{
+    color: rgb(13, 172, 18);
+    font-weight: 900;
+}
+
+.izvjestaj-actions{
+    margin: 0px auto;
+    width: 90%;
+    border-top: 1px solid var(--darkest);
+    padding: 15px 0px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.generate-pdf-btns{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.generate-pdf-btns label{
+    font-size: .9rem;
+    display: inline-block;
+    width: 175px;
+}
+
+.generate-pdf-btns button{
+    width: 100px;
+}
+
+#slanje-izvjestaja-na-mail select, #slanje-izvjestaja-na-mail button, .generate-pdf-btns select, .generate-pdf-btns button{
+    height: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: var(--lightest);
+    background-color: var(--dark-medium);
+    transition: 250ms all ease-in-out;
+}
+
+#slanje-izvjestaja-na-mail button:hover, #slanje-izvjestaja-na-mail select:hover, .generate-pdf-btns button:hover, .generate-pdf-btns select:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#slanje-izvjestaja-na-mail{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#slanje-izvjestaja-na-mail input{
+    font-size: 0.75rem;
+    width: 200px;
+    height: 35px;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: #fff;
+    border: 1px solid var(--darkest);
+    color: var(--darkest);
+}
+
+.attendance-logo{
+    border: 1px solid var(--darkest);
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.attendance-logo:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#generate-projects-work-time{
+    width: 150px;
+}
+
+@media (max-width: 1200px) {
+
+    select{
+        text-align: center;
+    }
+
+    #generate-projects-work-time{
+        width: 100%;
+    }
+
+    table, th{
+        font-size: 0.9rem;
+    }
+    #slanje-izvjestaja-na-mail button:hover, #slanje-izvjestaja-na-mail select:hover, .attendance-logo:hover, .generate-pdf-btns button:hover, .generate-pdf-btns select:hover{
+        opacity: 1;
+    }
+
+    .izvjestaj-actions{
+        width: clamp(250px, 50%, 500px);
+        margin: auto;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .radno-vrijeme-izvjestaji{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .generate-pdf-btns{
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .report-mail-form-inputs{
+        width: 100%;
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #slanje-izvjestaja-na-mail{
+        width: 100%;
+        align-items: stretch;
+    }
+
+    #slanje-izvjestaja-na-mail input, #slanje-izvjestaja-na-mail select{
+        text-align: center;
+    }
+
+    .generate-pdf-btns button, #slanje-izvjestaja-na-mail input{
+        width: 100%;
+    }
+
+    .generate-pdf-btns form{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+   
+}

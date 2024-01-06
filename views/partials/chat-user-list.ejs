@@ -1,0 +1,22 @@
+<div class="users-container">
+    <i class="fa-solid fa-close" id="close-users-list"></i>
+    <input type="text" placeholder="Pretraga..." id="search">
+    <ol class="korisnici-lista">
+        <% korisnici.forEach(korisnik => { %>
+            <a href="/radna-povrsina/poruke/<%= korisnik._id%>" class="search-item <%= korisnik._id.toString() === primaoc._id.toString() ? "active" : "" %>">
+                <li data-id=<%= korisnik._id %> class="korisnici-li">
+                    <i class="fa-solid fa-circle-user"> </i>  <%= korisnik.ime %> <%= korisnik.prezime %>
+                    <% if(korisnik.isOnline == "1"){ %>
+                        <span class="status-of active">(Online)</span>
+                    <% }else{ %>
+                        <span class="status-of">(Offline)</span>
+                    <% } %>
+                    <% if(unreadMsgsUserIds.has(korisnik._id.toString()) && korisnik._id != primaocId){ %>
+                        <img src="/img/notification.png" alt="notification icon" class="new-message-icon">
+                    <% } %>
+                </li>
+            </a>
+        <% }) %>
+    </ol>
+</div>
+

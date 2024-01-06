@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+:root {
+    --darkest: #161A30;
+    --dark-medium: #222136;
+    --light-medium: #a0a2a5;
+    --lightest: #F0ECE5;
+    --sky-blue: rgba(0, 119, 255, 0.856);
+}
+
+*{
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*::-ms-reveal{
+    display: none;
+}
+
+option{
+    font-size: .95rem;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+input, button, label{
+    font-family: inherit;
+}
+
+.loader {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 15px;
+    border: 8px solid var(--sky-blue);
+    border-top: 8px solid var(--darkest);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 2s linear infinite;
+    animation-play-state: paused;
+}
+
+.display-message{
+    z-index: 3;
+    display: none;
+    position: fixed;
+    top: 75px;
+    right: 15px;
+    color: var(--lightest);
+    background-color: var(--darkest);
+    padding: 10px;
+    font-weight: 900;
+    border-radius: 15px;
+    animation: horizontal-shake 1s infinite;
+    animation-play-state: paused;
+}
+
+.display-message.fail{
+    background-color: rgb(255, 0, 0) !important;
+
+}
+
+.display-message.success{
+    background-color: rgb(10, 155, 30) !important;
+}
+
+.display-message.neutral{
+    cursor: pointer;
+    color: var(--lightest);
+    background-color: var(--darkest);
+    border: 1px solid var(--darkest);
+    top: 75px;
+    right: 20px;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.display-message.active, .loader.active {
+    display: block;
+    animation-play-state: running;
+}
+
+.showPassword:hover{
+    cursor: pointer;
+}
+
+.btn-row{
+    padding: 0px 0px 30px 30px;
+}
+
+.btn-row button {
+    font-size: 1rem;
+    font-weight: 900;
+    margin-right: 20px;
+    width: 90px;
+    padding: 8px 0px;
+    border-radius: 10px;
+    border: 1px solid var(--darkest);
+    background-color: var(--darkest);
+    color: var(--lightest);
+    font-weight: 900;
+    transition: 250ms all ease-in-out;
+}
+
+.btn-row button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+textarea{
+    resize: none;
+    border-radius: 5px;
+    border: 1px solid var(--darkest);
+    padding: 5px;
+    font-size: 0.9rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes horizontal-shake {
+    0%{
+        translate: 5px 0px;
+    }
+    25%{
+        translate: -5px 0px;
+    }
+    50%{
+        translate: 5px 0px;
+
+    }
+    75%{
+        translate: -5px 0px;
+    }
+    100%{
+        translate: 5px 0px;
+    }
+}

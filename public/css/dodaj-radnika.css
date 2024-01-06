@@ -1,0 +1,96 @@
+@import url("./radna-povrsina.css");
+
+.radna-povrsina-forma{
+    margin: 30px 75px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 25px;
+    border-top: 5px solid var(--darkest);
+}
+
+.radna-povrsina-forma > h2{
+    user-select: none;
+    width: 100%;
+    padding: 15px;
+    color: rgb(139, 139, 139);
+    border-bottom: 1px solid rgb(139, 139, 139);
+}
+
+.row-field{
+    display: flex;
+    gap: 50px;
+    width: 95%;
+    padding-left: 30px;
+}
+
+.input-field{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-field input, .input-field select{
+    font-size: 1.1rem;
+    width: 100%;
+    border: 1px solid var(--darkest);
+    border-top: 3px solid var(--darkest);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.input-field label{
+    color: rgb(107, 107, 107);
+}
+
+
+
+.showPassword{
+    position: absolute;
+    top: 60%;
+    right: 10px;
+    display: none;
+}
+
+.showPassword.active{
+    display: block;
+}
+
+@media (max-width: 1000px) {
+    .btn-row button:hover {
+        opacity: 1;
+    }
+    
+    .radna-povrsina-forma{
+        margin: 30px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .row-field{
+        flex-direction: column;
+        gap: 15px;
+        width: 95%;
+    }
+
+    .btn-row button {
+        margin-right: 0px;
+        margin-top: 10px;
+        width: 95%;
+    }
+
+    .input-field input, .input-field select{
+        padding: 5px;
+    }
+}
+
+@media (max-width: 350px) {
+    input,select,button{
+        font-size: 0.8rem;
+    }
+}

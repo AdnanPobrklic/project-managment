@@ -1,0 +1,143 @@
+.page{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 100px 25px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid rgba(105, 105, 105, 0.541);
+    border-top: 5px solid var(--darkest);
+    border-radius: 15px;
+    padding-bottom: 25px;
+}
+
+.card-field{
+    display: flex;
+    gap: 5px;
+    font-size: 1.1rem;
+    padding: 0px 25px;
+}
+
+.labela{
+    font-weight: 900;
+}
+
+.radnici-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.card h3{
+    border-bottom: 3px solid rgb(105, 105, 105);
+    color: rgb(105, 105, 105);
+    padding: 15px;
+    font-size: 1.5rem;
+}
+
+.radnici-card ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.zadaci-card ol{
+    padding-left: 50px;
+
+}
+
+span.bold{
+    font-weight: 900;
+}
+
+.zadaci-card{
+    position: relative;
+}
+
+.zadaci-heading h3{
+    border: none;
+}
+
+.zadaci-card .zadaci-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid rgb(105, 105, 105);
+}
+
+.settings-icon{
+    margin-right: 15px;
+    color: rgb(58, 58, 58);
+    font-size: 1.5rem;
+}
+
+.settings-icon:hover{
+    color: var(--darkest);
+}
+
+.zadaci-card ol > li{
+    margin-top: 15px;
+}
+
+.zadaci-card ol > li > ul{
+    padding: 20px;
+    padding-right: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.trash-icon-zadatak{
+    font-size: 1.2rem;
+    color: rgb(200, 10, 20);
+    position: absolute;
+    right: 15px;
+}
+
+.trash-icon-zadatak:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.card h4{
+    text-align: center;
+    padding: 15px 0px;
+}
+
+@media (max-width: 1000px){
+.trash-icon-zadatak:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+    .zadaci-card ol > li > ul{
+        grid-template-columns: 1fr;
+        justify-items: start;
+    }
+}
+
+
+@media (max-width: 800px){
+    .radnici-card ul{
+        grid-template-columns: 1fr;
+        justify-items: start;
+        padding-left: 50px;
+    }
+}
+
+@media (max-width: 400px){
+    .card-field, .info-card, li{
+        font-size: .9rem;
+    }
+    
+    .trash-icon-zadatak{
+        font-size: 1rem;
+    }
+}

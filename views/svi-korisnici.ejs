@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/table-page.css">
+    <script type="module" src="/js/table-page.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Korisnici</h1>
+        <div class="search-field">
+            <label for="search">Pretraga: </label>
+            <input type="text" name="search" id="search" placeholder="Pretraga...">
+        </div>
+        <div class="scrollable-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ime</th>
+                        <th>Prezime</th>
+                        <th>Email</th>
+                        <th>Korisničko ime</th>
+                        <th>Uloga</th>
+                        <th>Postavke</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% korisnici.forEach(function(korisnik) { %>
+                        <tr>
+                            <td class="kolona-search-first"><%= korisnik.ime %></td>
+                            <td class="kolona-search-second"><%= korisnik.prezime %></td>
+                            <td><%= korisnik.email %></td>
+                            <td><%= korisnik.korisnickoIme %></td>
+                            <td>
+                                <% if (korisnik.uloga === 0) { %>
+                                    admin
+                                <% } else if (korisnik.uloga === 1) { %>
+                                    mendadžer
+                                <% } else if (korisnik.uloga === 2) { %>
+                                    radnik
+                                <% } else { %>
+                                    Nepoznato
+                                <% } %>
+                            </td>
+                            <td><a href="/radna-povrsina/svi-korisnici/korisnik/uredi/<%= korisnik._id %>"><i class="fa-solid fa-wrench settings-icon"></i></a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </main>    
+    <p class="display-message"></p>
+</body>
+</html>
+
+
+

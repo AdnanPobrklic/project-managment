@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/table-page.css">
+    <script type="module" src="/js/table-page.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Ovomjesečno prisustvo <%= korisnik.ime %> <%= korisnik.prezime %></h1>
+        <div class="search-field">
+            <label for="search">Pretraga: </label>
+            <input type="text" name="search" id="search" placeholder="Pretraga...">
+        </div>
+        <div class="scrollable-table">
+            <% if(prisustva.length === 0){ %>
+                <h1>Nema zabilježeno prisustvo u sistemu</h1>
+            <% }else { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Datum</th>
+                            <th>Prisustvo</th>
+                        </tr>
+                    </thead>                
+                    <tbody>
+                        <% prisustva.forEach(function(prisustvo) { %>
+                            <tr>
+                                <td class="kolona-search-first"><%= prisustvo.timeLogIn.toLocaleString('bs-BA') %> - <%= prisustvo.timeLogOut.toLocaleString('bs-BA') %></td>
+                                <td><%= prisustvo.sati %>h <%= prisustvo.minute %>min</td>                            
+                            </tr>
+                        <% }); %>   
+                    </tbody>
+                </table>
+            <% } %>
+        </div>
+    </main>    
+    <div class="loader"></div>
+    <p class="display-message"></p>
+</body>
+</html>
+
+
+
+
+

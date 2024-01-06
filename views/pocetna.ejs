@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/pocetna.css">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Dobrodošli <%= korisnickoIme %></h1>
+
+        <% if(uloga === 0){ %>
+            <div class="korisnici-card card">
+                <h2 class="card-heading">Korisnici</h2>
+                <p class="card-number"><%= brojKorisnika %></p>
+                <ul class="number-info first-number-info">
+                    <li><span>Admini:</span> <%= brojAdmina %></li>
+                    <li><span>Menadzeri:</span> <%= brojMenadzera %></li>
+                    <li><span>Radnici:</span> <%= brojRadnika %></li>
+                </ul>
+            </div>
+        <% } %>
+
+        <% if(uloga === 1 || uloga === 0) { %>
+            <div class="project-zadaci-info-div">
+
+                <div class="projekti-card card">
+                    <h2 class="card-heading">Ukupno projekata</h2>
+                    <p class="card-number"><%= brojProjekata %></p>
+                    <ul class="number-info four-col-number-info">
+                        <li><span>Na čekanju:</span> <%= brojnaCekanju %></li>
+                        <li><span>U izradi:</span> <%= brojuIzradiProjekti %></li>
+                        <li><span>Završeni:</span> <%= brojZavsrseniProjekti %></li>
+                        <li><span>Obustavljeni:</span> <%= brojObustavljeniProjekti %></li>
+                    </ul>
+                </div>
+    
+                <div class="zadaci-card card">
+                    <h2 class="card-heading">Ukupno zadataka</h2>
+                    <p class="card-number"><%= brojZadataka %></p>
+                    <ul class="number-info">
+                        <li><span>U radu:</span> <%= brojNeIzvrsenihZadataka %></li>
+                        <li><span>Završeni:</span> <%= brojIzvrsenihZadataka %></li>
+                    </ul>
+                </div>
+                
+            </div>
+        <% } %>
+
+        <% if(uloga === 1 || uloga === 2) { %>
+
+            <div class="moji-zadaci-projekti">
+                <div class="moji-zadaci-card card">
+                    <h2 class="card-heading">Moji projekti</h2>
+                    <p class="card-number"><%= brojMojihProjekataUkupno %></p>
+                    <ul class="number-info four-col-number-info">
+                        <li><span>Na čekanju:</span> <%= brojMojihProjekataNaCekanju %></li>
+                        <li><span>U izradi:</span> <%= brojMojihProjekataUIzradi %></li>
+                        <li><span>Završeni:</span> <%= brojMojihProjekataZavrseno %></li>
+                        <li><span>Obustavljeni:</span> <%= brojMojihProjekataObustavljeno %></li>
+                    </ul>
+                </div>
+                <div class="moji-zadaci-card card">
+                    <h2 class="card-heading">Moji zadaci</h2>
+                    <p class="card-number"><%= brojMojihZadataka %></p>
+                    <ul class="number-info">
+                        <li><span>Zadaci u radu:</span> <%= brojMojihNeIzvrsenihZadataka %></li>
+                        <li><span>Zadaci završeni:</span> <%= brojMojihIzvrsenihZadataka %></li>
+                    </ul>
+                </div>
+            </div>
+
+        <% } %>
+
+    </main>
+    <p class="display-message"></p>  
+</body>
+</html>

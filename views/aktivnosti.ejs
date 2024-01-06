@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/aktivnosti.css">
+    <script type="module" src="/js/aktivnosti.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <div class="aktivnosti-toggle-container">
+            <p class="activity-toggle toggle active">Aktivnosti sistema</p>
+            <p class="online-user-toggle toggle">Online korisnici</p>
+        </div>
+
+        <div class="aktivnost-sistema-section">
+            <div class="filter-aktivnosti-container">
+                <label for="filter-aktivnost">Filter:</label>
+                <select id="filter-aktivnost">
+                    <option value="sve" selected="selected">Sve aktivnosti</option>
+                    <option value="zadatak">Aktivnosti zadataka</option>
+                    <option value="projekat">Aktivnosti projekata</option>
+                    <option value="korisnik">Dodavanje/brisanje korisnika</option>
+                </select>
+            </div>
+            <ul class="aktivnosti-sistema">
+                <% aktivnosti.forEach(function(aktivnost) { %>
+                    <li class="aktivnost-sistema-li" data-id="<%= aktivnost._id %>">
+                        <img src="/img/system-activity.png" alt="aktivnost ikona" class="activity-icon">
+                        <span class="li-item first-li-item">
+                            <span>Vrsta:</span> <%= aktivnost.vrsta %> 
+                        </span>
+                        <span class="li-item">
+                            <span>Radnik</span>: <%= aktivnost.korisnik.ime %> <%= aktivnost.korisnik.prezime %> 
+                        </span>
+                        <span class="li-item">
+                            <span>Vrijeme:</span> <%= aktivnost.time%>
+                        </span>
+                        <i class="fa-solid fa-trash"></i>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        
+        <div class="online-korisnici-section">
+            <input type="text" placeholder="Pretraga...">
+            <ul class="online-korisnici">
+
+                <% if(onlineKorisnici.length === 0) { %>
+                    <h1>Nema online korisnika</h1>
+                <% } %>
+
+                <% onlineKorisnici.forEach(korisnik => { %>
+                    <li><%= korisnik.ime %> <%= korisnik.prezime %></li>
+                <% }) %>
+            </ul>
+        </div>
+    </main> 
+    <p class="display-message"></p>
+</body>
+</html>

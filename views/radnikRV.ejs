@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/table-page.css">
+    <script type="module" src="/js/table-page.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Radno vrijeme radnika</h1>
+        <div class="search-field">
+            <label for="search">Pretraga: </label>
+            <input type="text" name="search" id="search" placeholder="Pretraga...">
+        </div>
+        <div class="scrollable-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ime</th>
+                        <th>Prezime</th>
+                        <th>Ovomjesečno radno vrijeme</th>
+                        <th>Prisustvo</th>
+                    </tr>
+                </thead>                
+                <tbody>
+                    <% korisnici.forEach(function(korisnik) { %>
+                        <tr>
+                            <td class="kolona-search-first"><%= korisnik.ime %></td>
+                            <td class="kolona-search-second"><%= korisnik.prezime %></td> 
+                            <td><%= korisnik.radnoVrijemeHrMjesec %>h <%= korisnik.radnoVrijemeMinMjesec %>min</td>                            
+                            <td><a href="/radna-povrsina/radno-vrijeme/prisustvo-radnika/<%= korisnik._id %>"><img src="/img/attendance.png" alt="attendance-logo" class="attendance-logo"></a></td>                            
+                        </tr>
+                    <% }); %>   
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="izvjestaj-actions">
+            <div class="generate-pdf-btns">
+                <form class="radno-vrijeme-form" action="/radna-povrsina/radno-vrijeme/radnici/mjesecni/izvjestaj" method="GET" autocomplete="off">
+                    <label for="radnoVrijemeIzvjestaj">Radno vrijeme izvještaji</label>
+                    <select name="radnoVrijemeIzvjestaj" id="radno-vrijeme-izvjestaj">
+                        <option value="0" selected>mjesečni</option>
+                        <option value="1">godišnji</option>
+                        <option value="2">ukupni</option>
+                    </select>
+                    <button class="preuzmi-izvjestaj-btn">Preuzmi</button>
+                </form>
+                <form class="prisustvo-form" action="/radna-povrsina/prisustvo/radnici/mjesecni/izvjestaj" method="GET" autocomplete="off">
+                    <label for="prisustvoIzvjestaj">Prisustvo izvještaji</label>
+                    <select name="prisustvoIzvjestaj" id="prisustvoIzvjestaj">
+                        <option value="0" selected>mjesečni</option>
+                        <option value="1">godišnji</option>
+                        <option value="2">ukupni</option>
+                    </select>
+                    <button>Preuzmi</button>
+                </form>
+            </div>
+            <form id="slanje-izvjestaja-na-mail">
+                <div class="report-mail-form-inputs">
+                    <input type="email" placeholder="email..."  name="receiverMail" id="receiverMail" required>
+                <select name="vrstaIzvjestaja" id="vrstaIzvjestaja" required>
+                    <option value="mjesecni-radno-vrijeme">Mjesečni izvještaj radnog vremena</option>
+                    <option value="mjesecni-prisustvo">Mjesečni izvještaj prisustva</option>
+                </select>
+                </div>
+                <button>Pošalji na mail</button>
+                <div class="loader"></div>
+            </form>
+        </div>
+    </main>    
+    <div class="loader"></div>
+    <p class="display-message"></p>
+</body>
+</html>
+
+
+
+
+

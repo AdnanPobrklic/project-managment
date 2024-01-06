@@ -1,0 +1,125 @@
+@import url("./style.css");
+
+body {
+    background: url("../img/prijava-bg.svg") center no-repeat fixed;
+    background-size: cover;
+    height: 100dvh;
+}
+
+.login-container{
+    background-color: #fff;
+    border-radius: 0px 50px 50px 0px;
+    width: clamp(600px, 50%, 1000px);
+    height: 100%;
+    padding: 50px 5px 10px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.prijava-text-field h2{
+    margin-bottom: 5px;
+}
+
+.prijava-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.prijava-input-field{
+    position: relative;
+}
+
+.prijava-input-field input{
+    padding: 5px 35px 5px 45px;
+    font-size: 1.2rem;
+    border: 2px solid var(--darkest);
+    border-radius: 5px;
+    width: 300px;
+}
+
+.prijava-input-field > .fa-lock, .prijava-input-field > .fa-user{
+    border-radius: 5px;
+    background-color: var(--darkest);
+    color: var(--lightest);
+    padding: 13px;
+    position: absolute;
+    top: 50%;
+    translate: 0px -50%;
+}
+
+.showPassword{
+    position: absolute;
+    top: 50%;
+    translate: 0px -50%;
+    right: 15px;
+    display: none;
+}
+
+
+.showPassword.active{
+    display: block;
+}
+
+.prijava-input-field > .fa-lock, .prijava-input-field > .fa-user{
+    border-radius: 5px;
+    background-color: var(--darkest);
+    color: var(--lightest);
+    padding: 13px;
+    position: absolute;
+    top: 50%;
+    translate: 0px -50%;
+}
+
+.prijava-form button{
+    background-color: var(--darkest);
+    color: var(--lightest);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 5px 25px;
+    border: none;
+    transition: 250ms all ease-in-out;
+}
+
+.prijava-form button:hover, .showPassword:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+@media (max-width: 850px) {
+
+    .login-container{
+        gap: 30px;
+    }
+
+    .prijava-text-field h2{
+        font-size: 1.3rem;
+    }
+
+    .prijava-text-field p{
+        font-size: 0.9rem;
+    }
+    .prijava-form button{
+        font-size: 1rem;
+        opacity: 1;
+    }
+
+    .login-container{
+        width: 100%;
+    }
+
+    .prijava-input-field input{
+        width: 250px;
+        font-size: 1rem;
+    }
+    
+    .prijava-input-field > .fa-lock, .prijava-input-field > .fa-user{
+        padding: 11px;
+    }
+
+    .prijava-form button:hover, .showPassword:hover{
+        opacity: 1;
+    }
+}

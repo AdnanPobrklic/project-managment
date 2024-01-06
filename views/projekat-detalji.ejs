@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/projekat-detalji.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <script type="module" src="/js/projekat-detalji.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <div class="project-info-card card">
+            <h3>Detalji projekta</h3>
+            <div class="card-field">
+                <p class="labela">Naziv:</p>
+                <p><%= projekat.naziv %></p>
+            </div>
+            <div class="card-field">
+                <p class="labela">Radno vrijeme:</p>
+                <p><%= ukupniSati %>h : <%= ukupneMinute %>min</p>
+            </div>
+            <div class="card-field">
+                <p class="labela">Menadžer:</p>
+                <p><%= projekat.menadzer.ime %> <%= projekat.menadzer.prezime %></p>
+            </div>
+            <div class="card-field">
+                <p class="labela">Opis:</p>
+                <p><%= projekat.opis %></p>
+            </div>
+            <div class="card-field">
+                <p class="labela">Rok:</p>
+                <p><%= new Date(projekat.startniDatum).toLocaleDateString() %> - <%= new Date(projekat.zavrsniDatum).toLocaleDateString() %></p>
+            </div>
+            <div class="card-field">
+                <p class="labela">Status:</p>
+                <p>
+                    <%= 
+                    projekat.statusProjekta === 0 ? 'Na čekanju' :
+                    projekat.statusProjekta === 1 ? 'U izradi' :
+                    projekat.statusProjekta === 2 ? 'Završen' :
+                    projekat.statusProjekta === 3 ? 'Obustavljen' :
+                    'Nepoznato' 
+                %>
+                </p>
+            </div>
+        </div>
+        <div class="radnici-card card">
+            <h3>Radnici</h3>
+            <% if (projekat.radnici.length === 0) { %>
+                <h4>Trenutno nema dodanih radnika</h4>
+            <%}else { %>
+                <ul class="lista-radnika">
+                    <% radnici.forEach(radnik => { %>
+                        <% if (projekat.radnici.some(projektniRadnik => projektniRadnik.equals(radnik._id))) { %>
+                            <li>
+                                <i class="fa-solid fa-user"></i>
+                                <%= radnik.ime %> <%= radnik.prezime %>
+                            </li>
+                        <% } %>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </div>
+        
+        <div class="zadaci-card card">
+            <div class="zadaci-heading">
+                <h3>Zadaci</h3>
+                <a title="Dodaj zadatak" href="/radna-povrsina/svi-projekti/projekat/dodaj-zadatak/<%= projekat._id %>"><i class="fa-solid fa-circle-plus settings-icon"></i></a>
+            </div>
+            <% if (projekat.zadaci.length === 0) { %>
+                <h4>Trenutno nema dodanih zadataka</h4>
+            <%}else{ %>
+                <ol>
+                    <% projekat.zadaci.forEach((zadatak) => { %>
+                        <li class="zadatak-li">
+                            <ul>
+                                <li><span class="bold">Naslov:</span> <%= zadatak.naslov %></li>
+                                <% function getImePrezime(dodijeljenId) {
+                                    const radnik = radnici.find(radnik => radnik._id.toString() === dodijeljenId.toString());
+                                    return radnik ? `${radnik.ime} ${radnik.prezime}` : 'N/A';
+                                } %>
+                                
+                                <li><span class="bold">Dodijeljen:</span> <%= getImePrezime(zadatak.dodijeljen) %></li>
+                                <li><span class="bold">Izvršen:</span> <%= zadatak.izvrsen ? 'Da' : 'Ne' %></li>
+                                <li><span class="bold">Rok:</span> <%= new Date(zadatak.zadanDatuma).toLocaleDateString() %> - <%= new Date(zadatak.krajniRok).toLocaleDateString() %></li>
+                                <span class="trash-icon-zadatak"><i class="fa-solid fa-trash"></i></span>
+                            </ul>
+                        </li>
+                    <% }) %>
+                </ol> 
+                <% } %>
+        </div>
+
+        <div class="zadaci-card card zadaci-card-rm">
+            <h3>Radno vrijeme po zadatku</h3>
+            <% if (zadaci.length === 0) { %>
+                <h4>Nema unešenog radnog vremena na projektu</h4>
+            <%}else{ %>
+                <ol>
+                    <% zadaci.forEach((zadatak) => { %>
+                        <li class="zadatak-li">
+                            <ul>
+                                <li><span class="bold">Naslov:</span> <%= zadatak.naslov %></li>
+                                <li><span class="bold">Radnik:</span> <%= zadatak.dodijeljen.ime %> <%= zadatak.dodijeljen.prezime %></li>
+                                <li><span class="bold">Radno vrijeme:</span> <%= zadatak.radnoVrijemeHr %>h :<%= zadatak.radnoVrijemeMin %>min</li>
+                                <li><span class="bold">Datum izvršetka:</span> <%= new Date(zadatak.datumIzvrsetka).toLocaleDateString() %></li>
+                            </ul>
+                        </li>
+                    <% }) %>
+                </ol> 
+                <% } %>
+        </div>
+    </main>   
+    <p class="display-message"></p>  
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+</body>
+</html>

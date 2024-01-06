@@ -1,0 +1,86 @@
+form{
+    margin: 30px 75px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 25px;
+    border-top: 5px solid var(--darkest);
+}
+
+.date-fields{
+    display: flex;
+    gap: 25px;
+}
+
+form > h2{
+    user-select: none;
+    width: 100%;
+    padding: 15px;
+    color: rgb(139, 139, 139);
+    border-bottom: 1px solid rgb(139, 139, 139);
+    margin-bottom: 20px;
+}
+
+.input-field{
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+}
+
+.input-field input, .input-field select{
+    border: 1px solid rgb(146, 146, 146);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.input-field select{
+    background-color: var(--lightest);
+    color: var(--darkest);
+}
+
+.textarea-field, .select-field{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.btn-row{
+    padding: 10px;
+    padding-bottom: 25px;
+}
+
+.mlt-select-container{
+    z-index: 0;
+    width: 500px;
+}
+
+@media (max-width: 800px) {
+    .date-fields{
+        gap: 0px;
+        flex-direction: column;
+    }
+    form{
+        margin: 30px 15px;
+    }
+
+    label{
+        font-size: 0.9rem;
+    }
+
+    .input-field{
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .input-field input, .mlt-select-container{
+        width: 100%;
+    }
+
+
+    .input-field input, .input-field select{
+        font-size: 0.85rem;
+    }
+    
+
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <script type="module" src="/js/dodaj-zadatak.js" defer></script>
+    <link rel="stylesheet" href="/css/uredi-page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Dodaj zadatak projektu</h1>
+        <div class="info projekat">
+            <div class="picture-field">
+                <img src="/img/add-task.png" alt="User icon logo">
+            </div>
+            <form>
+                <div class="input-field zadatak">
+                    <label for="zadatak">Dodaj zadatak</label>
+                    <input type="text" name="naslov" id="naslov" placeholder="Naslov zadatka">
+                    <textarea name="opisZadatka" id="opis" cols="30" rows="5" placeholder="Opis zadatka"></textarea>
+                    <div class="date-field">
+                        <label for="zadanDatuma">Zadan datuma:</label>
+                        <input type="date" name="zadanDatuma" id="zadanDatuma" min= <%= formatMinDatum %>>
+                    </div>
+                    <div class="date-field">
+                        <label for="krajniRok">Krajni rok:</label>
+                        <input type="date" name="krajniRok" id="krajniRok">
+                    </div>
+                    <label for="dodijeljen">Dododijeljeno</label>
+                    <select name="dodijeljen" id="dodijeljen">
+                        <% projekatPopulisanRadnicima.radnici.forEach(function(radnik) { %>
+                            <option value="<%= radnik._id %>"><%= radnik.ime %> <%= radnik.prezime %></option>
+                        <% }); %>
+                    </select>
+                    <button type="submit" id="dodajZadatak" name="dodajZadatak">Dodaj zadatak</button>
+                    <a href="/radna-povrsina/svi-projekti/projekat/detalji/<%= idProjekta %>" class="povratak-na-projekat-btn">Povratak na projekat</a>
+                </div>
+            </form>
+        </div>
+        
+    </main> 
+    <p class="display-message"></p>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+</body>
+</html>

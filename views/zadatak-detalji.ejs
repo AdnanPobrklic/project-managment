@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/zadatak-detalji.css">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>O zadatku</h1>
+
+        <div class="details-card">
+            <h2 class="details-card-child"><%= zadatak.naslov %></h2>
+            <p class="details-card-child"><span class="labela">Opis:</span> <%= zadatak.opisZadatka %></p>
+            <p class="details-card-child"><span class="labela">Rok:</span> <%= new Date(zadatak.zadanDatuma).toLocaleDateString() %> - <%= new Date(zadatak.krajniRok).toLocaleDateString() %></p>
+            <p class="details-card-child"><span class="labela">Izvršen:</span> <%= zadatak.izvrsen ? 'Da' : 'Ne' %></p>
+            <p class="details-card-child"><span class="labela">Radno vrijeme:</span> <%= zadatak.radnoVrijemeHr %>h : <%= zadatak.radnoVrijemeMin %>min</p>
+        </div>
+    </main>   
+    <p class="display-message"></p>  
+</body>
+</html>

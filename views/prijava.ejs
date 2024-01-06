@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs"); %>
+    <link rel="shortcut icon" href="/img/prijavashortcuticon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/prijava.css">
+    <script type="module" src="/js/prijava.js" defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="prijava-text-field">
+            <h2>Dobrodošli na evidenciju projekata</h2>
+            <p>Molimo prijavite se na svoj račun sa podacima koje ste dobili od vašeg administratora</p>
+        </div>
+
+        <form class="prijava-form">
+            <div class="prijava-input-field">
+                <i class="fa-solid fa-lock"></i>
+                <input type="text" name="korisnickoIme" id="korisnickoIme" placeholder="Korisničko ime...">
+            </div>
+            <div class="prijava-input-field">
+                <i class="fa-solid fa-user"></i>
+                <input type="password" name="sifra" id="sifra" placeholder="Šifra...">
+                <i class="fa-solid fa-eye-slash showPassword"></i>
+            </div>
+            
+            <button>Prijava</button>
+        </form>
+    </div>
+    <p class="display-message"></p>
+</body>
+</html>

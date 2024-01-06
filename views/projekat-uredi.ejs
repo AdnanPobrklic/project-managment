@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/uredi-page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <script type="module" src="/js/projekat-uredi.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Uredi: "<%= projekat.naziv %>"</h1>
+        <div class="info projekat">
+            <div class="picture-field">
+                <img src="/img/blueprint.png" alt="User icon logo">
+            </div>
+            <form>
+                <div class="input-field">
+                    <label for="menadzer">Menadžer:</label>
+                    <select name="menadzer" id="menadzer">
+                        <% manageri.forEach(function(manager) { %>
+                            <option value="<%= manager._id %>" <%= manager._id.toString() === trenutniManagerId.toString() ? 'selected' : '' %> >
+                                <%= manager.ime %> <%= manager.prezime %>
+                            </option>
+                        <% }); %>
+                    </select>                                                        
+                </div>                
+                <div class="input-field">
+                    <label for="zavrsniDatum">Završni datum: </label>
+                    <input type="date" id="zavrsniDatum" name="zavrsniDatum" value= <%= formatZavrDatum %>  min= <%= formatMinDatum %> required>
+                </div>
+                <div class="input-field">
+                    <label for="statusProjekta">Status: </label>
+                    <select id="statusProjekta" name="statusProjekta">
+                        <option value="0" <%= projekat.statusProjekta === 0 ? 'selected' : '' %>>Na čekanju</option>
+                        <option value="1" <%= projekat.statusProjekta === 1 ? 'selected' : '' %>>U izradi</option>
+                        <option value="2" <%= projekat.statusProjekta === 2 ? 'selected' : '' %>>Završen</option>
+                        <option value="3" <%= projekat.statusProjekta === 3 ? 'selected' : '' %>>Obustavljen</option>
+                    </select>
+                </div>
+                <div class="input-field select-field">
+                    <label for="radnici">Radnici:</label>
+                    <div class="mlt-select-container">
+                        <select name="radnici" id="radnici-slct" multiple>
+                            <% radnici.forEach(function(radnik) { %>
+                                <option value="<%= radnik._id %>" <%= projekat.radnici.map(String).includes(radnik._id.toString()) ? 'selected' : '' %>><%= radnik.ime %> <%= radnik.prezime %></option>
+                            <% }); %>
+                            
+                        </select>                        
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <a href="/radna-povrsina/svi-projekti">Povratak</a>
+                    <button name="spasiPromjene">Spasi promjene</button>
+                    <button id="deleteBtn" name="brisanje">Obriši projekat</button>
+                </div>
+            </form>
+        </div>
+    </main> 
+    <p class="display-message"></p>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+</body>
+</html>

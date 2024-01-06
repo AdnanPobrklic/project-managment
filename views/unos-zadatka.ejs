@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <script type="module" src="/js/unos-zadatka.js" defer></script>
+    <link rel="stylesheet" href="/css/unos-zadatka.css">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Unesite zadatak</h1>
+        <form id="unos-projekta">
+            <h2>Forma unosa zadatka</h2>
+            <div class="form-container">
+                <div class="container-field">
+                    <div class="field">
+                        <label for="projekat">Projekat: </label>
+                        <select name="projekat" id="projekat" required>
+                            <% projekti.forEach(projekat => { %>
+                                <option value= <%= projekat._id %>> <%= projekat.naziv %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="zadatak">Zadatak: </label>
+                        <select name="zadatak" id="zadatak" required></select>
+                    </div>
+                </div>
+                <div class="container-field">
+                    <div class="field">
+                        <label for="sati">Radni sati: </label>
+                        <input type="number" min="0" name="sati" id="sati" step="1" required value="0">
+                    </div>
+                    <div class="field">
+                        <label for="minute">Radne minute: </label>
+                        <input type="number" min="0" max="59" name="minute" id="minute" required value="0">
+                    </div>
+                </div>
+            </div>
+            <button>Unos</button>
+        </form>
+    </main>
+    <p class="display-message"></p>
+</body>
+</html>
+
+

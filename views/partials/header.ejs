@@ -1,0 +1,84 @@
+<header>
+    <div class="info-bar">
+        <i class="fa-solid fa-bars toggle-menu" title="menu"></i>
+        <% if(uloga != 0){ %>
+            <span class="unseen-notifications <%= unseenNotifications == 0 ? 'inactive' : '' %>"><%= unseenNotifications %></span>
+            <i class="fa-solid fa-bell notification-toggle" title="notifikacije"></i>
+            <div class="notification-container">
+                <% notifications.forEach(notification => { %>
+                    <p>
+                        <%= notification.content %>
+                        <img src="/img/notification-p-icon.png" alt="notification-icon">
+                        <span><%= notification.time.toLocaleString('bs-BA') %></span>
+                    </p>
+            <% }) %>
+            </div>
+        <% } %>
+        <a href="/radna-povrsina/poruke" id="poruke-icon">
+        <% if(unseenMsgs){ %>
+            <img src="/img/new-chat.png" alt="Nova poruka ikona" class="new-chat-notification">
+        <% }else { %>
+            <i class="fa-solid fa-comments" title="chat"></i>  
+        <% } %>
+        </a>
+        <p>|</p>
+        <i class="fa-solid fa-right-from-bracket" id="logOutBtn" title="odjava"></i>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/radna-povrsina/pocetna"> <i class="fa-solid fa-home"></i> Početna </a></li>
+            
+            <% if (uloga === 0 || uloga === 1) { %>
+                <li class="toggle-dropdown">
+                    <i class="fa-solid fa-diagram-project"></i> 
+                    Projekti
+                    <i class="fa-solid fa-caret-right caret"></i> 
+                    <ul class="dropdown-container"  >
+                        <li class="list-style"><a href="/radna-povrsina/svi-projekti"><i class="fa-solid fa-circle-info"></i> Svi projekti</a></li>
+                        <li><a href="/radna-povrsina/dodaj-projekat"><i class="fa-solid fa-circle-plus"></i> Dodaj projekat</a></li>
+                    </ul>
+                </li>
+            <% } %>
+            
+            <% if (uloga === 0) { %>
+                <li class="toggle-dropdown">
+                    <i class="fa-solid fa-users"></i> 
+                    Korisnici
+                    <i class="fa-solid fa-caret-right caret"></i> 
+                    <ul class="dropdown-container">
+                        <li><a href="/radna-povrsina/svi-korisnici"><i class="fa-solid fa-circle-info"></i> Svi korisnici</a></li>
+                        <li><a href="/radna-povrsina/dodaj-korisnika"><i class="fa-solid fa-circle-plus"></i> Dodaj korisnika</a></li>
+                    </ul>
+                </li>
+            <% } %>
+            
+            <% if (uloga != 0) { %>
+                <li class="toggle-dropdown">
+                    <i class="fa-solid fa-list-check"></i>
+                    Zadaci
+                    <i class="fa-solid fa-caret-right caret"></i> 
+                    <ul class="dropdown-container">
+                        <li><a href="/radna-povrsina/moji-zadaci"><i class="fa-solid fa-circle-info"></i> Moji zadaci</a></li>
+                        <li><a href="/radna-povrsina/unos-zadatka"><i class="fa-solid fa-circle-plus"></i> Unos zadatka</a></li>
+                    </ul>
+                </li>
+            <% } %>   
+
+            <% if (uloga === 0 || uloga === 1) { %>
+                <li class="toggle-dropdown">
+                    <i class="fa-solid fa-clock"></i> 
+                    Radno vrijeme
+                    <i class="fa-solid fa-caret-right caret"></i> 
+                    <ul class="dropdown-container"  >
+                        <li class="list-style"><a href="/radna-povrsina/radno-vrijeme/radnici"><i class="fa-solid fa-user-nurse"></i> Po radniku</a></li>
+                        <li><a href="/radna-povrsina/radno-vrijeme/projekti"><i class="fa-solid fa-file"></i> Po projektu</a></li>
+                    </ul>
+                </li>
+            <% } %>
+            
+            <% if (uloga === 0) { %>
+                <li><a href="/radna-povrsina/aktivnosti"> <i class="fa-solid fa-chart-line"></i> Aktivnosti </a></li>
+            <% } %>    
+        </ul>
+    </nav>
+</header>

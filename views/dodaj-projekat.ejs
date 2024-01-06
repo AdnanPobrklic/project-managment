@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/dodaj-projekat.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <script type="module" src="/js/dodaj-projekat.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Dodajte projekat</h1>
+        <form id="unos-projekta" autocomplete="off">
+            <h2>Forma unosa projekta</h2>
+            <div class="input-field">
+                <label for="naziv">Naziv:</label>
+                <input type="text" required name="naziv" id="naziv" placeholder="Naziv projekta">
+            </div>
+            <div class="date-fields">
+                <div class="input-field">
+                    <label for="startniDatum">Početni datum:</label>
+                    <input type="date" id="startniDatum" name="startniDatum" min="<%= new Date().toISOString().split('T')[0] %>" required>
+                </div>
+                <div class="input-field">
+                    <label for="zavrsniDatum">Završni datum:</label>
+                    <input type="date" required name="zavrsniDatum" id="zavrsniDatum">
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="menadzer">Menadžer:</label>
+                <select name="menadzer" id="menadzer">
+                    <% manageri.forEach(function(manager) { %>
+                        <option value="<%= manager._id %>"><%= manager.ime %> <%= manager.prezime %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div class="select-field">
+                <label for="radnici">Radnici:</label>
+                <div class="mlt-select-container">
+                    <select name="radnici" id="radnici-slct" multiple>
+                        <% radnici.forEach(function(radnik) { %>
+                            <option value="<%= radnik._id %>"><%= radnik.ime %> <%= radnik.prezime %></option>
+                        <% }); %>
+                    </select>
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="statusProjekta">Status:</label>
+                <select name="statusProjekta" id="statusProjekta">
+                    <option value="0">Na čekanju</option>
+                    <option value="1">U izradi</option>
+                    <option value="3">Obustavljen</option>
+                </select>
+            </div>
+            <div class="textarea-field">
+                <label for="opis">Opis:</label>
+                <textarea name="opis" id="opis" cols="50" rows="10" placeholder="Opis projekta"></textarea>
+            </div>
+            <div class="btn-row">
+                <button>Unos</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </main>
+    <p class="display-message"></p>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,32 @@
+@import url("./style.css");
+
+body {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 10px;
+    gap: 25px;
+}
+
+body a {
+    text-decoration: none;
+    background-color: var(--darkest);
+    color: var(--lightest);
+    font-weight: 900;
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: 250ms all ease-in-out;
+}
+
+body a:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+@media (max-width: 1000px) {
+    body a:hover {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <script type="module" src="/js/dodaj-radnika.js" defer></script>
+    <link rel="stylesheet" href="/css/dodaj-radnika.css">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Dodajte korisnika</h1>
+        <form class="radna-povrsina-forma">
+            <h2>Forma unosa korisnika</h2>
+            <div class="row-field">
+                <div class="input-field">
+                    <label for="ime">Ime: </label>
+                    <input type="text" id="ime" name="ime" placeholder="Ime...">
+                </div>
+                <div class="input-field">
+                    <label for="prezime">Prezime: </label>
+                    <input type="text" id="prezime" name="prezime" placeholder="Prezime...">
+                </div>
+            </div>
+            <div class="row-field">
+                <div class="input-field">
+                    <label for="uloga">Uloga:</label>
+                    <select name="uloga" id="uloga">
+                        <option value="2">Radnik</option>
+                        <option value="1">Menadžer</option>
+                        <option value="0">Admin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row-field">
+                <div class="input-field">
+                    <label for="korisnickoIme">Korsničko ime: </label>
+                    <input type="text" id="korisnickoIme" name="korisnickoIme" placeholder="Korsničko ime...">
+                </div>
+                <div class="input-field">
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" placeholder="Email...">
+                </div>
+            </div>
+            <div class="row-field">
+                <div class="input-field">
+                    <label for="sifra">Šifra: </label>
+                    <input type="password" id="sifra" name="sifra" placeholder="Šifra..." class="input-pwd-txt">
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
+                <div class="input-field">
+                    <label for="ponovaSifra">Ponovite šifru: </label>
+                    <input type="password" id="ponovaSifra" name="ponovaSifra" placeholder="Ponovite šifra..." class="input-pwd-txt">
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
+            </div>
+            <div class="btn-row">
+                <button type="submit">Unos</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </main>
+    <p class="display-message"></p>
+</body>
+</html>

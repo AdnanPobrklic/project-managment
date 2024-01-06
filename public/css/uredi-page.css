@@ -1,0 +1,173 @@
+@import url("./radna-povrsina.css");
+
+.info{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 85px;
+}
+
+.info form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    padding-bottom: 25px;
+}
+
+.input-field{
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+form label{
+    width: 200px;
+    color: rgb(128, 128, 128);
+    font-weight: 900;
+}
+
+form input, select{
+    width: 280px;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.63);
+    border-radius: 5px;
+}
+
+select{
+    padding: 8px;
+    font-size: .9rem;
+    background-color: #fff;
+}
+
+.select-field > .mlt-select-container{
+    width: 280px;
+}
+
+.btn-group{
+    margin-top: 15px;
+    margin-left: auto;
+}
+
+.btn-group button, .btn-group a{
+    border: none;
+    padding: 8px;
+    font-size: .9rem;
+    border-radius: 5px;
+}
+
+.btn-group button{
+    background-color: var(--darkest);
+    color: var(--lightest);
+}
+
+
+.btn-group a{
+    background-color: rgb(71, 71, 71);
+    padding: 10px;
+    color: var(--lightest);
+}
+
+button:hover, a:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.showPassword{
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    translate: 0px -50%;
+    display: none;
+}
+
+.showPassword.active{
+    display: block;
+}
+
+#deleteBtn{
+    border: none;
+    background-color: rgb(255, 23, 12);
+}
+
+.input-field.zadatak{
+    width: 450px;
+    border: 1px solid rgb(189, 189, 189);
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1.05rem;
+}
+
+.input-field.zadatak select, .input-field.zadatak input{
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#dodajZadatak, .povratak-na-projekat-btn{
+    padding: 5px;   
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: .9rem;
+}
+
+.povratak-na-projekat-btn{
+    text-align: center;
+    color: var(--darkest);
+    background-color: var(--light-medium);
+}
+
+@media (max-width: 710px) {
+    .input-field.zadatak{
+        width: 390px;
+    }
+    button:hover, a:hover{
+        opacity: 1;
+    }
+    .info{
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .btn-group{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+
+    .btn-group a{
+        padding: 7px;
+    }
+    
+    .btn-group button, .btn-group a{
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .input-field{
+        flex-direction: column;
+    }
+    
+    .showPassword{
+        top: 70%;
+    }
+}
+
+@media (max-width: 400px) {
+    .input-field.zadatak{
+        width: 310px;
+    }
+}

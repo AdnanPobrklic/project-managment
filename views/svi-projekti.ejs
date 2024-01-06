@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/table-page.css">
+    <script type="module" src="/js/table-page.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Projekti</h1>
+        <div class="search-field">
+            <label for="search">Pretraga: </label>
+            <input type="text" name="search" id="search" placeholder="Pretraga...">
+        </div>
+        <div class="scrollable-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Menadžer</th>
+                        <th>Zadaci</th>
+                        <th>Rok</th>
+                        <th>Status</th>
+                        <th>Akcije</th>
+                    </tr>
+                </thead>                
+                <tbody>
+                    <% projekti.forEach(function(projekat) { %>
+                        <tr>
+                            <td class="kolona-search-first"><%= projekat.naziv %></td>
+                            <td><%= projekat.menadzerIme %></td> 
+                            <td>
+                                <div class="progress-column">
+                                    <% let izvrseniZadaci = projekat.zadaci.filter(zadatak => zadatak.izvrsen).length; %>
+                                    <% let zadaci = projekat.zadaci.length; %>
+                                    <% let napredak = zadaci > 0 ? (izvrseniZadaci / zadaci) * 100 : 0; %>
+                                    <% let zaokruzenNapredak = napredak.toFixed(0); %>
+                                    <label for="file"><%= zaokruzenNapredak %>% Završeno</label>
+                                    <progress id="file" value="<%= napredak %>" max="100"></progress>
+                                </div>                                
+                            </td>                            
+                            <td><%= new Date(projekat.startniDatum).toLocaleDateString() %> - <%= new Date(projekat.zavrsniDatum).toLocaleDateString() %></td>
+                            <td class="project-status <%= 
+                            projekat.statusProjekta === 0 ? 'onhold' :
+                            projekat.statusProjekta === 1 ? 'active' :
+                            projekat.statusProjekta === 2 ? 'finished' :
+                            projekat.statusProjekta === 3 ? 'stopped' :
+                            'unknown' 
+                            %>">
+                            <%= 
+                                projekat.statusProjekta === 0 ? 'Na čekanju' :
+                                projekat.statusProjekta === 1 ? 'U izradi' :
+                                projekat.statusProjekta === 2 ? 'Završen' :
+                                projekat.statusProjekta === 3 ? 'Obustavljen' :
+                                'Nepoznato' 
+                            %>
+                            </td>        
+                            <% if (user.userId == projekat.menadzer._id || uloga === 0) { %>
+                                <td>
+                                    <a title="Detalji projekta" href="/radna-povrsina/svi-projekti/projekat/detalji/<%= projekat._id %>"><i class="fa-solid fa-circle-info settings-icon"></i></a>
+                                    <a title="Uredi projekat" href="/radna-povrsina/svi-projekti/projekat/uredi/<%= projekat._id %>"><i class="fa-solid fa-pen-to-square settings-icon"></i></a>
+                                </td>
+                            <% } else { %>
+                                <td>
+                                    <p><i class="fa-solid fa-ban settings-icon"></i></p>
+                                </td>
+                            <% } %>
+                        </tr>
+                    <% }); %>   
+                </tbody>
+            </table>
+        </div>
+    </main>    
+    <p class="display-message"></p>
+</body>
+</html>
+
+
+
+
+

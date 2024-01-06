@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/table-page.css">
+    <script type="module" src="/js/table-page.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Moji zadaci</h1>
+        <div class="search-field">
+            <label for="search">Pretraga: </label>
+            <input type="text" name="search" id="search" placeholder="Pretraga...">
+        </div>
+        <div class="scrollable-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zadatak</th>
+                        <th>Projekat</th>
+                        <th>Rok</th>
+                        <th>Izvršen</th>
+                        <th>Detalji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% zadaci.forEach(function(zadatak) { %>
+                        <tr>
+                            <td class="kolona-search-first"><%= zadatak.naslov %></td>
+                            <td class="kolona-search-second"><%= zadatak.projekat %></td>
+                            <td><%= new Date(zadatak.zadanDatuma).toLocaleDateString() %> - <%= new Date(zadatak.krajniRok).toLocaleDateString() %></td>
+                            <td class=                               
+                            <% if (zadatak.izvrsen === false) { %>
+                                "neizvrsen"
+                            <% } else if (zadatak.izvrsen === true) { %>
+                                "izvrsen"
+                            <% } %> >
+                                <% if (zadatak.izvrsen === false) { %>
+                                    Ne
+                                <% } else if (zadatak.izvrsen === true) { %>
+                                    Da
+                                <% } else { %>
+                                    Nepoznato
+                                <% } %>
+                            </td>
+                            <td>
+                                <a href="/radna-povrsina/detalji-zadatka/<%= zadatak._id %>"><i class="fa-solid settings-icon fa-circle-info"></i></a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </main>    
+    <p class="display-message"></p>
+</body>
+</html>
+
+
+

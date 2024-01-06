@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <link rel="stylesheet" href="/css/uredi-page.css">
+    <script type="module" src="/js/korisnik-uredi.js" defer></script>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <h1>Izmjeni podatke</h1>
+        <div class="info">
+            <div class="picture-field">
+                <img src="/img/user.png" alt="User icon logo">
+            </div>
+            <form>
+                <div class="input-field">
+                    <label for="ime">Ime: </label>
+                    <input type="text" id="ime" name="ime" value= <%= korisnik.ime %> required>
+                </div>
+                <div class="input-field">
+                    <label for="prezime">Prezime: </label>
+                    <input type="text" id="prezime" name="prezime" value= <%= korisnik.prezime %> required>
+                </div>
+                <div class="input-field">
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" value= <%= korisnik.email %> required>
+                </div>
+                <div class="input-field">
+                    <label for="korisnickoIme">Korisničko ime: </label>
+                    <input type="text" id="korisnickoIme" name="korisnickoIme" value= <%= korisnik.korisnickoIme %> required>
+                </div>
+                <div class="input-field">
+                    <label for="sifra">Postavite novu šifru: </label>
+                    <input type="password" id="sifra" name="sifra" class="input-pwd-txt">
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
+                <div class="input-field">
+                    <label for="ponovaSifra">Ponovite šifru: </label>
+                    <input type="password" id="ponovaSifra" name="ponovaSifra" class="input-pwd-txt">
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
+                <div class="input-field">
+                    <label for="uloga">Uloga: </label>
+                    <select id="uloga" name="uloga">
+                        <option value="0" <%= korisnik.uloga === 0 ? 'selected' : '' %>>Admin</option>
+                        <option value="1" <%= korisnik.uloga === 1 ? 'selected' : '' %>>Menadžer</option>
+                        <option value="2" <%= korisnik.uloga === 2 ? 'selected' : '' %>>Radnik</option>
+                    </select>
+                </div>
+                <div class="btn-group">
+                    <a href="/radna-povrsina/svi-korisnici">Povratak</a>
+                    <button name="spasiPromjene">Spasi promjene</button>
+                    <button id="deleteBtn" name="brisanje">Obriši korisnika</button>
+                </div>
+            </form>
+        </div>
+    </main>    
+    <p class="display-message"></p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <%- include("./partials/head.ejs", { title }) %>
+    <%- include("./partials/radna-povrsina-links.ejs")%>
+    <script type="module" src="/js/chat-frontend.js" defer></script>
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <main class="page">
+        <div class="outter-container">
+            <%- include("./partials/chat-user-list.ejs", {korisnici, primaoc}) %>
+            <div class="form-chat-display-container">
+                <h1 class="chat-window-info">
+                    <i class="fa-solid fa-address-book"></i>
+                    <i class="fa-solid fa-circle-user chat-window-icon"></i>  
+                    <%= primaoc.ime %> <%= primaoc.prezime %>
+                    <img src="/img/broom.png" alt="broom picture" title="Očisti razgvoro" id="clearConvo">
+                </h1>
+                <div class="messages-container">
+                    <% chatBetweenUsers.forEach(message => { %>
+                        <p class="message <%= message.receiver_id.toString() === primaoc._id.toString() ? "message-outcom" : "message-incom" %>">
+                            <span class="msg-info"><%= new Date(message.time).toLocaleDateString('bs-BA', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) %></span>
+                            <%= message.text %>
+                            <% if(message.receiver_id.toString() === primaoc._id.toString()){ %>
+                                <% if(message.seen){ %>
+                                    <span class="seen-status"><i class="fa-solid fa-check-double"></i></span>
+                                <% }else{ %>
+                                    <span class="seen-status"><i class="fa-solid fa-check"></i></span>
+                                <% } %>
+                            <% } %>
+                        </p>
+                    <% }) %>
+                </div>
+                <form>
+                    <textarea name="message" id="message" placeholder="Poruka..."></textarea>
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <p class="display-message"></p>
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+</html>
