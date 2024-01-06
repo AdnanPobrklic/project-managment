@@ -1,7 +1,7 @@
 # Evidencija Projekata
 
-[LIVE PROJECT](https://evidencija-projekata.onrender.com)
-[YouTube video funkcionalnosti projekta](https://www.youtube.com/watch?v=r7zLRfbbAx4)
+- [LIVE PROJECT](https://evidencija-projekata.onrender.com)
+- [YouTube video funkcionalnosti projekta](https://www.youtube.com/watch?v=r7zLRfbbAx4)
 
 Evidencija projekata je aplikacija koja pruža pomoć pri evidenciji projekata na kojima radite, radnicima koji učestvuju na samim projektima te o radnom vremenu i prisustvu korisnika sistema.
 
