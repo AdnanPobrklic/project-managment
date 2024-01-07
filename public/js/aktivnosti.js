@@ -112,8 +112,7 @@ document.querySelector("#filter-aktivnost").addEventListener("change", e => {
 
     if(e.target.value != "sve"){
         document.querySelectorAll(".first-li-item").forEach(item => {
-            console.log(item.textContent.toLocaleLowerCase().replace(/ /g,'').substring(7))
-            if(item.textContent.toLocaleLowerCase().replace(/ /g,'').substring(7).includes(e.target.value.toLocaleLowerCase())){
+            if(item.textContent.toLocaleLowerCase().replace(/ /g,'').substring(6).includes(e.target.value.toLocaleLowerCase())){
                 item.parentElement.classList.remove("hide-li")
             }else{
                 item.parentElement.classList.add("hide-li")
