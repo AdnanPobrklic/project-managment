@@ -15,7 +15,7 @@ body {
 .page h1 {
     user-select: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.26);
-    padding: 25px 5px;
+    padding: 25px 15px;
     color: rgba(0, 0, 0, 0.568);
 }
 
