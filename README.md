@@ -1,68 +1,65 @@
-# Evidencija Projekata
+# Project Management System
 
 - [LIVE PROJECT](https://evidencija-projekata.onrender.com)
-- [YouTube video funkcionalnosti projekta](https://www.youtube.com/watch?v=r7zLRfbbAx4)
+- [YouTube video showcasing project functionalities](https://www.youtube.com/watch?v=r7zLRfbbAx4)
 
-Evidencija projekata je aplikacija koja pruža pomoć pri evidenciji projekata na kojima radite, radnicima koji učestvuju na samim projektima te o radnom vremenu i prisustvu korisnika sistema.
+Project Management System is an application designed to assist in managing projects, the employees involved in those projects, as well as keeping track of working hours and user attendance within the system.
 
-Ključne Funkcionalnosti
+## Key Features
 
-    Različite Uloge:
-        Administrator: Pregled svih aktivnosti sistema u stvarnom vremenu.
-        Menadžeri: Kreiranje i upravljanje projektima, timovima i zadacima te praćenje radnog vremena i prisustva.
-        Radnici: Izvršavanje dodeljenih zadataka, unos evidencije radnog vremena.
+- **Various Roles:**
+    - Administrator: Real-time system activity overview.
+    - Managers: Creation and management of projects, teams, and tasks, as well as monitoring working hours and attendance.
+    - Workers: Execution of assigned tasks, input of working hours.
 
-    Upravljanje Projektima:
-        Dodavanje i praćenje projekata.
-        Formiranje timova sa definisanim vođom i članovima.
+- **Project Management:**
+    - Addition and tracking of projects.
+    - Formation of teams with defined leaders and members.
 
-    Zadaci i Radnici:
-        Dodavanje zadataka na projekte sa asignacijom specifičnom radniku.
-        Unos i praćenje izvršenih zadataka.
+- **Tasks and Workers:**
+    - Addition of tasks to projects with assignment to specific workers.
+    - Input and tracking of completed tasks.
 
-    Prisustvo i Status:
-        Praćenje prisustva odnosno svih online i offline korisnika te vremena kojim su korisnici bili prisutni.
-        Praćenje statusa korisnika.
+- **Attendance and Status:**
+    - Monitoring attendance of all online and offline users and the time they were present.
+    - Tracking user status.
 
-    Realtime Komunikacija:
-        Realtime notifikacije.
-        Mogućnost korišćenja chata za komunikaciju između korisnika.
+- **Real-time Communication:**
+    - Real-time notifications.
+    - Ability to use chat for communication between users.
 
-    Slanje Obaveštenja:
-        Slanje obaveštenja putem e-maila za važne informacije i ažuriranja.
-    
-    Generisanje izvještaja:
-        Generisanje pdf izvještaja sa podacima o radnom vremenu i prisustvo po korisnicima i projektima.
-        Mogučnost preuzimanja istih te njihovog slanja na mail.
+- **Sending Notifications:**
+    - Sending notifications via email for important information and updates.
 
+- **Report Generation:**
+    - Generating PDF reports with data on working hours and attendance by users and projects.
+    - Ability to download and send them via email.
 
-## Instalacija
-1. Instalirajte neophodnih modula: `npm install`
+## Installation
+1. Install necessary modules: `npm install`
 
-## Konfiguracija
+## Configuration
 
-- Prilagodite `.env` fajl tako da on sadrži
+- Adjust the `.env` file to contain
 
-1. DBURI=mongoose_uri (ukoliko nije proslijeđen bit će korišten localhost)
-2. PORT=broj (ukoliko nije proslijeđen bit će korišten 3000)
-3. SESSION_SECRET=secret
-4. EMAIL=email
-5. EMAIL_PW=email_password
+    1. DBURI=mongoose_uri (if not provided, localhost will be used)
+    2. PORT=number (if not provided, 3000 will be used)
+    3. SESSION_SECRET=secret
+    4. EMAIL=email
+    5. EMAIL_PW=email_password
 
-## Pokretanje
+## Running
 
-1. Pokrenite aplikaciju: `npm start`
-2. Aplikacija će biti dostupna na http://localhost:3000/
+1. Start the application: `npm start`
+2. The application will be available at http://localhost:3000/
 
-## Resursi
+## Resources
 
-Za ovu aplikaciju korišteni su slijedeći resursi:
+The following resources were used for this application:
 
-- Ikone
+- **Icons**
+    1. [Font Awesome](https://fontawesome.com/)
+    2. [Flaticon](https://www.flaticon.com/)
 
-1. https://fontawesome.com/
-2. https://www.flaticon.com/
-
-- Background image
-
-3. https://app.haikei.app/
+- **Background image**
+    1. [Haikei](https://app.haikei.app/)
